@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Aptitude Preparation</title>
+
+    <link rel="stylesheet"
+          href="/static/css/Preparation/Aptitude.css">
+
+</head>
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        <img src="/static/images/EngiPrep_Logo.png"
+             alt="Logo Image">
+
+        <h2>
+            EngiPrep – Placement Preparation Platform
+        </h2>
+
+    </div>
+
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/Preparation">
+            Preparation
+        </a>
+
+        <a href="/Dashboard">
+            Dashboard
+        </a>
+
+        {% if session.get("user_id") %}
+
+<a href="/logout">
+    Logout
+</a>
+
+ {% else %}
+
+<a href="/login">
+    Login
+</a>
+
+{% endif %}
+
+    </nav>
+
+</header>
+
+
+
+<div class="aptitude-page">
+
+
+    <!-- BACK TO PREPARATION -->
+
+    <a href="/Preparation" class="back-btn">
+        ← Back to Preparation
+    </a>
+
+
+
+    <div class="page-header">
+
+        <h1>
+            Aptitude Preparation
+        </h1>
+
+        <p>
+            Improve your aptitude skills through quantitative aptitude,
+            logical reasoning, verbal ability and data interpretation.
+        </p>
+
+    </div>
+
+
+
+    <div class="aptitude-layout">
+
+
+        <aside class="aptitude-sidebar">
+
+            <h3>
+                Aptitude Topics
+            </h3>
+
+
+            {% for section in sections %}
+
+
+            <a href="/Aptitude/{{ section[0] }}"
+               {% if loop.first %}class="active-topic"{% endif %}>
+
+
+                {% if loop.index == 1 %}
+
+                <span class="topic-small-icon">
+                    🧮
+                </span>
+
+                {% elif loop.index == 2 %}
+
+                <span class="topic-small-icon">
+                    💡
+                </span>
+
+                {% elif loop.index == 3 %}
+
+                <span class="topic-small-icon">
+                    📘
+                </span>
+
+                {% elif loop.index == 4 %}
+
+                <span class="topic-small-icon">
+                    📊
+                </span>
+
+                {% else %}
+
+                <span class="topic-small-icon">
+                    🧠
+                </span>
+
+                {% endif %}
+
+
+                <span>
+                    {{ section[1] }}
+                </span>
+
+
+            </a>
+
+
+            {% endfor %}
+
+
+        </aside>
+
+
+
+        <main class="aptitude-content">
+
+
+            <div class="welcome-card">
+
+                <span class="section-title">
+                    APTITUDE PREPARATION
+                </span>
+
+                <h2>
+                    Build Your Aptitude Skills
+                </h2>
+
+                <p>
+                    Practice important aptitude topics commonly asked
+                    in placement examinations.
+                </p>
+
+            </div>
+
+
+
+            <div class="topic-grid">
+
+
+                {% for section in sections %}
+
+
+                <div class="topic-card">
+
+
+                    {% if loop.index == 1 %}
+
+                    <div class="topic-icon">
+                        🧮
+                    </div>
+
+                    {% elif loop.index == 2 %}
+
+                    <div class="topic-icon">
+                        💡
+                    </div>
+
+                    {% elif loop.index == 3 %}
+
+                    <div class="topic-icon">
+                        📘
+                    </div>
+
+                    {% elif loop.index == 4 %}
+
+                    <div class="topic-icon">
+                        📊
+                    </div>
+
+                    {% else %}
+
+                    <div class="topic-icon">
+                        🧠
+                    </div>
+
+                    {% endif %}
+
+
+
+                    <h3>
+                        {{ section[1] }}
+                    </h3>
+
+
+
+                    {% if loop.index == 1 %}
+
+                    <p>
+                        Practice numbers, percentages, ratios,
+                        profit and loss, time and work, probability
+                        and more.
+                    </p>
+
+                    {% elif loop.index == 2 %}
+
+                    <p>
+                        Improve problem solving through logical
+                        reasoning, puzzles, sequences and
+                        analytical questions.
+                    </p>
+
+                    {% elif loop.index == 3 %}
+
+                    <p>
+                        Improve grammar, vocabulary, sentence
+                        correction and reading comprehension.
+                    </p>
+
+                    {% elif loop.index == 4 %}
+
+                    <p>
+                        Learn to analyze tables, charts, graphs
+                        and numerical data.
+                    </p>
+
+                    {% else %}
+
+                    <p>
+                        Understand your skills, interests and
+                        workplace preferences through practice
+                        assessments.
+                    </p>
+
+                    {% endif %}
+
+
+
+                    <a href="/Aptitude/{{ section[0] }}">
+
+                        {% if loop.index == 5 %}
+
+                        Start Test →
+
+                        {% else %}
+
+                        Start Practice →
+
+                        {% endif %}
+
+                    </a>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
