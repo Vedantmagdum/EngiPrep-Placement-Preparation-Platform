@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - EngiPrep</title>
+
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <img src="/static/images/EngiPrep_Logo.png"
+             alt="EngiPrep Logo">
+
+        <h2>
+            EngiPrep
+        </h2>
+
+    </div>
+
+
+    <nav>
+    <a href="/">Home</a>
+
+    <a href="/Preparation">
+        Preparation
+    </a>
+
+    <a href="/Dashboard">
+        Dashboard
+    </a>
+
+    {% if session.get("user_id") %}
+
+<a href="/logout">
+    Logout
+</a>
+
+{% else %}
+
+<a href="/login">
+    Login
+</a>
+
+{% endif %}
+
+</nav>
+
+</header>
+
+
+<main class="dashboard">
+
+
+    <!-- WELCOME SECTION -->
+
+    <section class="welcome-section">
+
+        <div>
+
+            <p class="small-title">
+                STUDENT DASHBOARD
+            </p>
+
+            <h1>
+
+                Welcome,
+
+                {% if profile %}
+
+                    {{ profile[0] }}
+
+                {% else %}
+
+                    Student
+
+                {% endif %}
+
+                👋
+
+            </h1>
+
+            <p>
+                Track your placement preparation progress and improve your skills.
+            </p>
+
+        </div>
+
+
+        <a href="/profile"
+           class="profile-button">
+
+            Edit Profile
+
+        </a>
+
+    </section>
+
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🎓
+            </div>
+
+            <div>
+
+                <p>
+                    CGPA
+                </p>
+
+                <h2>
+
+                    {% if profile and profile[6] is not none %}
+
+                        {{ profile[6] }}
+
+                    {% else %}
+
+                        --
+
+                    {% endif %}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                💻
+            </div>
+
+            <div>
+
+                <p>
+                    Skills
+                </p>
+
+                <h2>
+                    {{ skill_count }}
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📁
+            </div>
+
+            <div>
+
+                <p>
+                    Projects
+                </p>
+
+                <h2>
+                    {{ project_count }}
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📝
+            </div>
+
+            <div>
+
+                <p>
+                    Tests Completed
+                </p>
+
+                <h2>
+                    {{ test_count }}
+                </h2>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- MAIN DASHBOARD CARDS -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- STUDENT INFORMATION -->
+
+        <div class="dashboard-card profile-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="card-label">
+                        PROFILE
+                    </p>
+
+                    <h2>
+                        Student Information
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            {% if profile %}
+
+            <div class="profile-info">
+
+
+                <div>
+
+                    <span>
+                        Full Name
+                    </span>
+
+                    <strong>
+                        {{ profile[0] }}
+                    </strong>
+
+                </div>
+
+
+
+                <div>
+
+                    <span>
+                        Username
+                    </span>
+
+                    <strong>
+                        {{ profile[1] }}
+                    </strong>
+
+                </div>
+
+
+
+                <div>
+
+                    <span>
+                        Email
+                    </span>
+
+                    <strong>
+                        {{ profile[2] }}
+                    </strong>
+
+                </div>
+
+
+
+                <div>
+
+                    <span>
+                        College
+                    </span>
+
+                    <strong>
+                        {{ profile[3] or "Not added" }}
+                    </strong>
+
+                </div>
+
+
+
+                <div>
+
+                    <span>
+                        Branch
+                    </span>
+
+                    <strong>
+                        {{ profile[4] or "Not added" }}
+                    </strong>
+
+                </div>
+
+
+
+                <div>
+
+                    <span>
+                        Semester
+                    </span>
+
+                    <strong>
+                        {{ profile[5] or "Not added" }}
+                    </strong>
+
+                </div>
+
+
+
+                <div>
+
+                    <span>
+                        City
+                    </span>
+
+                    <strong>
+                        {{ profile[8] or "Not added" }}
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            {% else %}
+
+            <p class="empty-message">
+                Profile information is not available.
+            </p>
+
+            {% endif %}
+
+        </div>
+
+
+
+        <!-- APTITUDE PERFORMANCE -->
+
+        <div class="dashboard-card aptitude-card">
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="card-label">
+                        APTITUDE
+                    </p>
+
+                    <h2>
+                        Aptitude Performance
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="score-box">
+
+
+                <div class="score-circle">
+
+                    <span>
+                        {{ average_score }}%
+                    </span>
+
+                </div>
+
+
+
+                <div>
+
+                    <h3>
+                        Average Score
+                    </h3>
+
+
+                    {% if test_count > 0 %}
+
+                    <p>
+
+                        You have completed
+
+                        {{ test_count }}
+
+                        aptitude test{% if test_count != 1 %}s{% endif %}.
+
+                    </p>
+
+                    {% else %}
+
+                    <p>
+                        No aptitude tests completed yet.
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+
+            </div>
+
+
+
+            <a href="/Preparation"
+               class="action-button">
+
+                Start Preparation →
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- SKILL ANALYZER -->
+
+        <div class="dashboard-card analyzer-card">
+
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="card-label">
+                        AI ANALYZER
+                    </p>
+
+                    <h2>
+                        Skill Analyzer
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="analyzer-content">
+
+
+                <div class="analyzer-item">
+
+                    <span>
+                        Current Skills
+                    </span>
+
+                    <strong>
+                        {{ skill_count }}
+                    </strong>
+
+                </div>
+
+
+
+                <div class="analyzer-item">
+
+                    <span>
+                        Aptitude Tests
+                    </span>
+
+                    <strong>
+                        {{ test_count }}
+                    </strong>
+
+                </div>
+
+
+
+                <div class="analyzer-item">
+
+                    <span>
+                        Average Aptitude
+                    </span>
+
+                    <strong>
+                        {{ average_score }}%
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <p class="analyzer-note">
+
+                Your skill analysis will become more detailed as you complete
+                aptitude tests and add more skills.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- PROFESSIONAL LINKS -->
+
+        <div class="dashboard-card links-card">
+
+
+            <div class="card-heading">
+
+                <div>
+
+                    <p class="card-label">
+                        PROFESSIONAL
+                    </p>
+
+                    <h2>
+                        Professional Links
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            {% if profile %}
+
+            <div class="professional-links">
+
+
+                {% if profile[9] %}
+
+                <a href="{{ profile[9] }}"
+                   target="_blank">
+
+                    LinkedIn
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+                {% else %}
+
+                <div class="disabled-link">
+
+                    LinkedIn
+
+                    <span>
+                        Not added
+                    </span>
+
+                </div>
+
+                {% endif %}
+
+
+
+                {% if profile[10] %}
+
+                <a href="{{ profile[10] }}"
+                   target="_blank">
+
+                    GitHub
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+                {% else %}
+
+                <div class="disabled-link">
+
+                    GitHub
+
+                    <span>
+                        Not added
+                    </span>
+
+                </div>
+
+                {% endif %}
+
+
+
+                {% if profile[11] %}
+
+                <a href="{{ profile[11] }}"
+                   target="_blank">
+
+                    Resume
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+                {% else %}
+
+                <div class="disabled-link">
+
+                    Resume
+
+                    <span>
+                        Not added
+                    </span>
+
+                </div>
+
+                {% endif %}
+
+
+            </div>
+
+            {% endif %}
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- SECTION PERFORMANCE -->
+
+    <section class="section-performance-section">
+
+
+        <div class="section-performance-heading">
+
+            <p class="card-label">
+                SECTION PERFORMANCE
+            </p>
+
+            <h2>
+                Your Section-wise Performance
+            </h2>
+
+            <p>
+                Track your performance across all aptitude sections.
+            </p>
+
+        </div>
+
+
+
+        <div class="section-performance-grid">
+
+
+            {% if section_progress %}
+
+
+                {% for section in section_progress %}
+
+
+                <div class="section-performance-card">
+
+
+                    <div class="section-performance-header">
+
+
+                        <div>
+
+                            <h3>
+                                {{ section[0] }}
+                            </h3>
+
+
+                            {% if section[1] == 0 %}
+
+                            <span class="section-status">
+                                Not Attempted
+                            </span>
+
+                            {% else %}
+
+                            <span class="section-status">
+                                {{ section[1] }} test(s) attempted
+                            </span>
+
+                            {% endif %}
+
+                        </div>
+
+
+
+                        <strong>
+                            {{ "%.0f"|format(section[2]) }}%
+                        </strong>
+
+
+                    </div>
+
+
+
+                    {% if section[1] > 0 %}
+
+                    <div class="section-progress-bar">
+
+                        <div
+                            class="section-progress-fill"
+                            style="--progress-width: {{ section[2] }}%;">
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+
+
+                    <div class="section-performance-footer">
+
+
+                        {% if section[1] == 0 %}
+
+                        <span>
+                            Start practicing this section
+                        </span>
+
+
+                        {% elif section[2] >= 80 %}
+
+                        <span class="section-high">
+                            Strong Performance
+                        </span>
+
+
+                        {% elif section[2] >= 50 %}
+
+                        <span class="section-medium">
+                            Keep Improving
+                        </span>
+
+
+                        {% else %}
+
+                        <span class="section-low">
+                            Needs Practice
+                        </span>
+
+                        {% endif %}
+
+
+
+                        {% if section[1] > 0 %}
+
+                        <span>
+                            {{ section[1] }} test(s)
+                        </span>
+
+                        {% endif %}
+
+
+                    </div>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+            {% else %}
+
+
+                <div class="section-empty">
+
+                    <p>
+                        No section performance data available yet.
+                    </p>
+
+                    <a href="/Preparation">
+                        Start Aptitude Preparation →
+                    </a>
+
+                </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- APTITUDE TEST HISTORY -->
+
+    <section class="test-history-section">
+
+
+        <div class="history-header">
+
+            <p class="card-label">
+                TEST HISTORY
+            </p>
+
+            <h2>
+                Your Aptitude Test History
+            </h2>
+
+            <p>
+                Review your previous aptitude test attempts and scores.
+            </p>
+
+        </div>
+
+
+
+        {% if aptitude_history %}
+
+
+        <div class="history-table-wrapper">
+
+
+            <table class="history-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            Topic
+                        </th>
+
+                        <th>
+                            Score
+                        </th>
+
+                        <th>
+                            Correct
+                        </th>
+
+                        <th>
+                            Percentage
+                        </th>
+
+                        <th>
+                            Attempt Date
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for test in aptitude_history %}
+
+
+                    <tr>
+
+                        <td>
+                            {{ loop.index }}
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+                                {{ test[1] }}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="history-score">
+                                {{ test[4] }} / {{ test[2] }}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            {{ test[3] }} / {{ test[2] }}
+                        </td>
+
+
+                        <td>
+
+                            <span class="history-percentage">
+
+                                {{ "%.2f"|format(test[5]|float) }}%
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            {% if test[6] %}
+
+                                {{ test[6].strftime("%d %b %Y, %I:%M %p") }}
+
+                            {% else %}
+
+                                --
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+
+
+        {% else %}
+
+
+        <div class="history-empty">
+
+            <div class="history-empty-icon">
+                📝
+            </div>
+
+            <h3>
+                No Tests Completed Yet
+            </h3>
+
+            <p>
+                Complete your first aptitude test to see your performance history here.
+            </p>
+
+            <a href="/Preparation">
+                Start Aptitude Practice →
+            </a>
+
+        </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+
+    <!-- PERFORMANCE SUMMARY -->
+
+    <section class="performance-summary-section">
+
+
+        <div class="history-header">
+
+            <div>
+
+                <p class="card-label">
+                    PERFORMANCE ANALYSIS
+                </p>
+
+                <h2>
+                    Your Aptitude Performance Summary
+                </h2>
+
+                <p>
+                    Understand your current strengths and areas that need more practice.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="performance-summary-grid">
+
+
+            <!-- STRONG TOPICS -->
+
+            <div class="summary-card strong-card">
+
+
+                <div class="summary-icon">
+                    🟢
+                </div>
+
+
+                <div class="summary-content">
+
+                    <h3>
+                        Strong Topics
+                    </h3>
+
+                    <span class="summary-count">
+                        {{ strong_topics|length }}
+                    </span>
+
+                </div>
+
+
+
+                {% if strong_topics %}
+
+                <div class="summary-topic-list">
+
+
+                    {% for topic in strong_topics %}
+
+
+                    <div class="summary-topic">
+
+                        <div>
+
+                            <strong>
+                                {{ topic[1] }}
+                            </strong>
+
+                            <span>
+                                {{ topic[0] }}
+                            </span>
+
+                        </div>
+
+                        <b>
+                            {{ "%.2f"|format(topic[3]) }}%
+                        </b>
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+                {% else %}
+
+                <p class="summary-empty">
+                    No strong topics yet.
+                </p>
+
+                {% endif %}
+
+
+            </div>
+
+
+
+            <!-- IMPROVING TOPICS -->
+
+            <div class="summary-card improving-card">
+
+
+                <div class="summary-icon">
+                    🟡
+                </div>
+
+
+                <div class="summary-content">
+
+                    <h3>
+                        Improving Topics
+                    </h3>
+
+                    <span class="summary-count">
+                        {{ improving_topics|length }}
+                    </span>
+
+                </div>
+
+
+
+                {% if improving_topics %}
+
+
+                <div class="summary-topic-list">
+
+
+                    {% for topic in improving_topics %}
+
+
+                    <div class="summary-topic">
+
+                        <div>
+
+                            <strong>
+                                {{ topic[1] }}
+                            </strong>
+
+                            <span>
+                                {{ topic[0] }}
+                            </span>
+
+                        </div>
+
+                        <b>
+                            {{ "%.2f"|format(topic[3]) }}%
+                        </b>
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+                {% else %}
+
+
+                <p class="summary-empty">
+                    No improving topics yet.
+                </p>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+
+            <!-- WEAK TOPICS -->
+
+            <div class="summary-card weak-card">
+
+
+                <div class="summary-icon">
+                    🔴
+                </div>
+
+
+                <div class="summary-content">
+
+                    <h3>
+                        Needs Practice
+                    </h3>
+
+                    <span class="summary-count">
+                        {{ weak_topics|length }}
+                    </span>
+
+                </div>
+
+
+
+                {% if weak_topics %}
+
+
+                <div class="summary-topic-list">
+
+
+                    {% for topic in weak_topics %}
+
+
+                    <div class="summary-topic">
+
+                        <div>
+
+                            <strong>
+                                {{ topic[1] }}
+                            </strong>
+
+                            <span>
+                                {{ topic[0] }}
+                            </span>
+
+                        </div>
+
+                        <b>
+                            {{ "%.2f"|format(topic[3]) }}%
+                        </b>
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+                {% else %}
+
+
+                <p class="summary-empty">
+                    No weak topics yet.
+                </p>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+
+            <!-- NOT ATTEMPTED -->
+
+            <div class="summary-card new-card">
+
+
+                <div class="summary-icon">
+                    ⚪
+                </div>
+
+
+                <div class="summary-content">
+
+                    <h3>
+                        Not Attempted
+                    </h3>
+
+                    <span class="summary-count">
+                        {{ not_attempted_topics|length }}
+                    </span>
+
+                </div>
+
+
+
+                {% if not_attempted_topics %}
+
+
+                <div class="summary-topic-list">
+
+
+                    {% for topic in not_attempted_topics %}
+
+
+                    <div class="summary-topic">
+
+                        <div>
+
+                            <strong>
+                                {{ topic[1] }}
+                            </strong>
+
+                            <span>
+                                {{ topic[0] }}
+                            </span>
+
+                        </div>
+
+                        <b>
+                            —
+                        </b>
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+                {% else %}
+
+
+                <p class="summary-empty">
+                    All topics have been attempted.
+                </p>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- YOUR JOURNEY -->
+
+    <section class="next-section">
+
+
+        <p class="card-label">
+            YOUR JOURNEY
+        </p>
+
+
+        <h2>
+            Continue Your Placement Preparation
+        </h2>
+
+
+        <p>
+            Complete aptitude tests, improve your skills, build projects,
+            and prepare for interviews.
+        </p>
+
+
+
+        <div class="journey-buttons">
+
+            <a href="/Preparation">
+                Preparation
+            </a>
+
+            <a href="/profile">
+                Update Profile
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Preparation - EngiPrep</title>
+
+    <link rel="stylesheet"
+          href="/static/css/prepration.css">
+
+</head>
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+
+        <img src="/static/images/EngiPrep_Logo.png"
+             alt="EngiPrep Logo">
+
+        <h2>
+            EngiPrep – Placement Preparation Platform
+        </h2>
+
+    </div>
+
+
+    <nav>
+
+    <a href="/">
+        Home
+    </a>
+
+    <a href="/Preparation">
+        Preparation
+    </a>
+
+    <a href="/Dashboard">
+        Dashboard
+    </a>
+
+    {% if session.get("user_id") %}
+
+    <a href="/logout">
+        Logout
+    </a>
+
+    {% else %}
+
+    <a href="/login">
+        Login
+    </a>
+
+    {% endif %}
+
+</nav>
+
+</header>
+
+
+
+<main class="preparation-page">
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+        <span class="section-title">
+            PLACEMENT PREPARATION
+        </span>
+
+        <h1>
+            Prepare Smarter with EngiPrep
+        </h1>
+
+        <p>
+            Build your aptitude, programming, technical and interview skills
+            using curated preparation resources.
+        </p>
+
+    </section>
+
+
+
+    <!-- APTITUDE -->
+
+    <section class="preparation-section">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                01
+            </span>
+
+            <div>
+
+                <h2>
+                    Aptitude Preparation
+                </h2>
+
+                <p>
+                    Practice AI-generated aptitude questions and track your performance.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="resource-grid">
+
+
+            <a href="/Aptitude"
+               class="resource-card aptitude-resource">
+
+                <div class="resource-icon">
+                    🧠
+                </div>
+
+                <div>
+
+                    <h3>
+                        Aptitude Practice
+                    </h3>
+
+                    <p>
+                        Quantitative Aptitude, Logical Reasoning, Verbal Ability,
+                        Data Interpretation and Psychometric tests.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Start Practice →
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PROGRAMMING -->
+
+    <section class="preparation-section">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                02
+            </span>
+
+            <div>
+
+                <h2>
+                    Programming
+                </h2>
+
+                <p>
+                    Practice programming, DSA and coding problems using external platforms.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="resource-grid">
+
+
+            <!-- LEETCODE -->
+
+            <a href="https://leetcode.com/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    💻
+                </div>
+
+                <div>
+
+                    <h3>
+                        LeetCode
+                    </h3>
+
+                    <p>
+                        Practice coding problems, DSA and technical interview questions.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Visit Website ↗
+                </span>
+
+            </a>
+
+
+
+            <!-- HACKERRANK -->
+
+            <a href="https://www.hackerrank.com/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    👨‍💻
+                </div>
+
+                <div>
+
+                    <h3>
+                        HackerRank
+                    </h3>
+
+                    <p>
+                        Solve programming challenges and practice different
+                        computer science topics.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Visit Website ↗
+                </span>
+
+            </a>
+
+
+
+            <!-- GEEKSFORGEEKS -->
+
+            <a href="https://www.geeksforgeeks.org/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    📚
+                </div>
+
+                <div>
+
+                    <h3>
+                        GeeksforGeeks
+                    </h3>
+
+                    <p>
+                        Learn programming, DSA, algorithms and computer science
+                        concepts with practice problems.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Visit Website ↗
+                </span>
+
+            </a>
+
+
+
+            <!-- INTERVIEWBIT -->
+
+            <a href="https://www.interviewbit.com/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    🚀
+                </div>
+
+                <div>
+
+                    <h3>
+                        InterviewBit
+                    </h3>
+
+                    <p>
+                        Practice programming and prepare for technology
+                        job interviews.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Visit Website ↗
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- COURSES -->
+
+    <section class="preparation-section">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                03
+            </span>
+
+            <div>
+
+                <h2>
+                    Courses
+                </h2>
+
+                <p>
+                    Explore external learning platforms for technical and career skills.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="resource-grid">
+
+
+            <!-- FREECODECAMP -->
+
+            <a href="https://www.freecodecamp.org/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    🎓
+                </div>
+
+                <div>
+
+                    <h3>
+                        freeCodeCamp
+                    </h3>
+
+                    <p>
+                        Learn programming, web development, Python, SQL,
+                        AI and other technical skills for free.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Visit Website ↗
+                </span>
+
+            </a>
+
+
+
+            <!-- COURSERA -->
+
+            <a href="https://www.coursera.org/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    📖
+                </div>
+
+                <div>
+
+                    <h3>
+                        Coursera
+                    </h3>
+
+                    <p>
+                        Explore courses and professional learning programs
+                        from universities and companies.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Visit Website ↗
+                </span>
+
+            </a>
+
+
+
+            <!-- GEEKSFORGEEKS COURSES -->
+
+            <a href="https://www.geeksforgeeks.org/courses/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    🧑‍🎓
+                </div>
+
+                <div>
+
+                    <h3>
+                        GeeksforGeeks Courses
+                    </h3>
+
+                    <p>
+                        Explore DSA, development, AI, programming and
+                        placement-oriented courses.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Visit Website ↗
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- INTERVIEW PREPARATION -->
+
+    <section class="preparation-section">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                04
+            </span>
+
+            <div>
+
+                <h2>
+                    Interview Preparation
+                </h2>
+
+                <p>
+                    Prepare for technical interviews, coding rounds and placement interviews.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="resource-grid">
+
+
+            <!-- LEETCODE -->
+
+            <a href="https://leetcode.com/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    🧩
+                </div>
+
+                <div>
+
+                    <h3>
+                        LeetCode Interview
+                    </h3>
+
+                    <p>
+                        Practice coding and technical interview questions.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Prepare Now ↗
+                </span>
+
+            </a>
+
+
+
+            <!-- GEEKSFORGEEKS INTERVIEW -->
+
+            <a href="https://www.geeksforgeeks.org/blogs/interview-preparation/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    📝
+                </div>
+
+                <div>
+
+                    <h3>
+                        GeeksforGeeks Interview Preparation
+                    </h3>
+
+                    <p>
+                        Explore interview preparation resources, DSA,
+                        core subjects and interview questions.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Prepare Now ↗
+                </span>
+
+            </a>
+
+
+
+            <!-- HACKERRANK -->
+
+            <a href="https://www.hackerrank.com/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    🖥️
+                </div>
+
+                <div>
+
+                    <h3>
+                        HackerRank
+                    </h3>
+
+                    <p>
+                        Practice coding challenges and improve your
+                        technical problem-solving skills.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Practice Now ↗
+                </span>
+
+            </a>
+
+
+
+            <!-- INTERVIEWBIT -->
+
+            <a href="https://www.interviewbit.com/"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="resource-card">
+
+                <div class="resource-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h3>
+                        InterviewBit
+                    </h3>
+
+                    <p>
+                        Practice coding and technical interview preparation
+                        for technology roles.
+                    </p>
+
+                </div>
+
+                <span class="resource-link">
+                    Prepare Now ↗
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FINAL CTA -->
+
+    <section class="preparation-cta">
+
+        <span class="section-title">
+            KEEP LEARNING
+        </span>
+
+        <h2>
+            Build Your Placement Skills
+        </h2>
+
+        <p>
+            Practice regularly, improve your skills and keep track of your
+            preparation through the EngiPrep dashboard.
+        </p>
+
+        <a href="/Dashboard">
+            View Dashboard →
+        </a>
+
+    </section>
+
+
+</main>
+
+
+</body>
+
+</html>

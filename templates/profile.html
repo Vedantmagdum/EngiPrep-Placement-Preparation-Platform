@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Complete Profile - EngiPrep</title>
+
+    <link rel="stylesheet" href="/static/css/profile.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <img src="/static/images/EngiPrep_Logo.png" alt="EngiPrep Logo">
+        <h2>EngiPrep</h2>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Preparation">Preparation</a></li>
+            <li><a href="/Dashboard">Dashboard</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+
+<main class="profile-page">
+
+    <div class="profile-heading">
+        <h1>Complete Your Profile</h1>
+
+        <p>
+            Tell us about yourself so EngiPrep can personalize your
+            placement preparation journey.
+        </p>
+    </div>
+
+
+    <form class="profile-form" id="profileForm">
+
+        <!-- ========================================= -->
+        <!-- 01 PERSONAL INFORMATION -->
+        <!-- ========================================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+                <span>01</span>
+
+                <div>
+                    <h2>Personal Information</h2>
+                    <p>Enter your basic personal details.</p>
+                </div>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="input-group full-width">
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        name="full_name"
+                        placeholder="Enter your full name"
+                        value="{{ profile[0] or '' if profile else '' }}"
+                        required>
+                </div>
+
+
+                <div class="input-group">
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        value="{{ profile[1] or '' if profile else '' }}"
+                        required>
+                </div>
+
+
+                <div class="input-group">
+                    <label>Phone Number</label>
+
+                    <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        value="{{ profile[2] or '' if profile else '' }}">
+                </div>
+
+
+                <div class="input-group">
+                    <label>City</label>
+
+                    <input
+                        type="text"
+                        name="city"
+                        placeholder="Enter your city"
+                        value="{{ profile[3] or '' if profile else '' }}">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- 02 EDUCATIONAL DETAILS -->
+        <!-- ========================================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+                <span>02</span>
+
+                <div>
+                    <h2>Educational Details</h2>
+                    <p>Provide your current academic information.</p>
+                </div>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="input-group full-width">
+                    <label>College / University</label>
+
+                    <input
+                        type="text"
+                        name="college_name"
+                        placeholder="Enter your college or university"
+                        value="{{ profile[4] or '' if profile else '' }}"
+                        required>
+                </div>
+
+
+                <div class="input-group">
+                    <label>Branch</label>
+
+                    <input
+                        type="text"
+                        name="branch"
+                        placeholder="Example: AIML"
+                        value="{{ profile[5] or '' if profile else '' }}"
+                        required>
+                </div>
+
+
+                <div class="input-group">
+                    <label>Semester</label>
+
+                    <select name="semester" required>
+
+                        <option value="">Select Semester</option>
+
+                        <option value="1"
+                            {% if profile and profile[6]|string == '1' %}selected{% endif %}>
+                            Semester 1
+                        </option>
+
+                        <option value="2"
+                            {% if profile and profile[6]|string == '2' %}selected{% endif %}>
+                            Semester 2
+                        </option>
+
+                        <option value="3"
+                            {% if profile and profile[6]|string == '3' %}selected{% endif %}>
+                            Semester 3
+                        </option>
+
+                        <option value="4"
+                            {% if profile and profile[6]|string == '4' %}selected{% endif %}>
+                            Semester 4
+                        </option>
+
+                        <option value="5"
+                            {% if profile and profile[6]|string == '5' %}selected{% endif %}>
+                            Semester 5
+                        </option>
+
+                        <option value="6"
+                            {% if profile and profile[6]|string == '6' %}selected{% endif %}>
+                            Semester 6
+                        </option>
+
+                        <option value="7"
+                            {% if profile and profile[6]|string == '7' %}selected{% endif %}>
+                            Semester 7
+                        </option>
+
+                        <option value="8"
+                            {% if profile and profile[6]|string == '8' %}selected{% endif %}>
+                            Semester 8
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <div class="input-group">
+                    <label>Current CGPA</label>
+
+                    <input
+                        type="number"
+                        name="cgpa"
+                        min="0"
+                        max="10"
+                        step="0.01"
+                        placeholder="Example: 8.25"
+                        value="{{ profile[7] or '' if profile else '' }}"
+                        required>
+                </div>
+
+
+                <div class="input-group">
+                    <label>Graduation Year</label>
+
+                    <select name="graduation_year">
+
+                        <option value="">Select Year</option>
+
+                        <option value="2027"
+                            {% if profile and profile[8]|string == '2027' %}selected{% endif %}>
+                            2027
+                        </option>
+
+                        <option value="2028"
+                            {% if profile and profile[8]|string == '2028' %}selected{% endif %}>
+                            2028
+                        </option>
+
+                        <option value="2029"
+                            {% if profile and profile[8]|string == '2029' %}selected{% endif %}>
+                            2029
+                        </option>
+
+                        <option value="2030"
+                            {% if profile and profile[8]|string == '2030' %}selected{% endif %}>
+                            2030
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- 03 ACADEMIC & COMPETITION -->
+        <!-- ========================================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+                <span>03</span>
+
+                <div>
+                    <h2>Academic & Competition Experience</h2>
+                    <p>
+                        Tell us about your academic achievements and participation.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="input-group full-width">
+
+                <label>Competitions Participated In</label>
+
+                <textarea
+                    name="competitions"
+                    placeholder="Example: Hackathon, Coding Competition, Quiz Competition, Project Competition...">{{ profile[9] or '' if profile else '' }}</textarea>
+
+            </div>
+
+
+            <div class="input-group full-width">
+
+                <label>Academic Achievements</label>
+
+                <textarea
+                    name="academic_achievements"
+                    placeholder="Mention your academic achievements, awards, ranks or other accomplishments...">{{ profile[10] or '' if profile else '' }}</textarea>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- 04 SKILLS & SELF ANALYSIS -->
+        <!-- ========================================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+                <span>04</span>
+
+                <div>
+                    <h2>Skills & Self Analysis</h2>
+                    <p>
+                        Help us understand your current strengths and areas for improvement.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="input-group full-width">
+
+                <label>Technical Skills</label>
+
+                <input
+                    type="text"
+                    name="skills"
+                    placeholder="Example: Python, C, HTML, CSS, JavaScript, SQL"
+                    value="{{ profile[11] or '' if profile else '' }}">
+
+            </div>
+
+
+            <div class="input-group full-width">
+
+                <label>Strengths</label>
+
+                <textarea
+                    name="strengths"
+                    placeholder="Example: Problem solving, communication, teamwork, leadership...">{{ profile[12] or '' if profile else '' }}</textarea>
+
+            </div>
+
+
+            <div class="input-group full-width">
+
+                <label>Weaknesses / Areas to Improve</label>
+
+                <textarea
+                    name="weaknesses"
+                    placeholder="Example: Public speaking, logical reasoning, time management...">{{ profile[13] or '' if profile else '' }}</textarea>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- 05 PROJECT -->
+        <!-- ========================================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+                <span>05</span>
+
+                <div>
+                    <h2>Projects</h2>
+                    <p>Add your project information.</p>
+                </div>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="input-group full-width">
+
+                    <label>Project Name</label>
+
+                    <input
+                        type="text"
+                        name="project_title"
+                        placeholder="Example: EngiPrep Placement Portal"
+                        value="{{ profile[14] or '' if profile else '' }}">
+
+                </div>
+
+
+                <div class="input-group full-width">
+
+                    <label>Project Technologies</label>
+
+                    <input
+                        type="text"
+                        name="project_technologies"
+                        placeholder="Example: HTML, CSS, JavaScript, Flask, PostgreSQL"
+                        value="{{ profile[15] or '' if profile else '' }}">
+
+                </div>
+
+
+                <div class="input-group full-width">
+
+                    <label>Project Description</label>
+
+                    <textarea
+                        name="project_description"
+                        placeholder="Describe your project...">{{ profile[16] or '' if profile else '' }}</textarea>
+
+                </div>
+
+
+                <div class="input-group full-width">
+
+                    <label>GitHub Project Link</label>
+
+                    <input
+                        type="url"
+                        name="project_github"
+                        placeholder="https://github.com/username/project"
+                        value="{{ profile[17] or '' if profile else '' }}">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- 06 PROFESSIONAL LINKS -->
+        <!-- ========================================= -->
+
+        <section class="form-section">
+
+            <div class="section-title">
+                <span>06</span>
+
+                <div>
+                    <h2>Professional Links</h2>
+                    <p>Add your professional profiles.</p>
+                </div>
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="input-group">
+
+                    <label>LinkedIn Profile</label>
+
+                    <input
+                        type="url"
+                        name="linkedin"
+                        placeholder="https://linkedin.com/in/username"
+                        value="{{ profile[18] or '' if profile else '' }}">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>GitHub Profile</label>
+
+                    <input
+                        type="url"
+                        name="github"
+                        placeholder="https://github.com/username"
+                        value="{{ profile[19] or '' if profile else '' }}">
+
+                </div>
+
+
+                <div class="input-group full-width">
+
+                    <label>Resume Link</label>
+
+                    <input
+                        type="url"
+                        name="resume_link"
+                        placeholder="Enter your resume link"
+                        value="{{ profile[20] or '' if profile else '' }}">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================= -->
+        <!-- FORM FOOTER -->
+        <!-- ========================================= -->
+
+        <div class="form-footer">
+
+            <p>
+                You can update your profile later from the Dashboard.
+            </p>
+
+            <button type="submit">
+                Save Profile
+                <span>→</span>
+            </button>
+
+        </div>
+
+
+    </form>
+
+</main>
+
+
+<script>
+
+document.getElementById("profileForm").addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const form = e.target;
+
+    const data = {
+
+        /* Personal Information */
+        full_name: form.full_name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        city: form.city.value,
+
+        /* Educational Details */
+        college: form.college_name.value,
+        branch: form.branch.value,
+        semester: form.semester.value,
+        cgpa: form.cgpa.value,
+        graduation_year: form.graduation_year.value,
+
+        /* Academic & Competition */
+        competitions: form.competitions.value,
+        academic_achievements: form.academic_achievements.value,
+
+        /* Skills */
+        skills: form.skills.value,
+        strengths: form.strengths.value,
+        weaknesses: form.weaknesses.value,
+
+        /* Project */
+        project_title: form.project_title.value,
+        project_technologies: form.project_technologies.value,
+        project_description: form.project_description.value,
+        project_github: form.project_github.value,
+
+        /* Professional Links */
+        linkedin: form.linkedin.value,
+        github: form.github.value,
+        resume_link: form.resume_link.value
+    };
+
+
+    try {
+
+        const response = await fetch("/profile/save", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(data)
+
+        });
+
+
+        const result = await response.json();
+
+
+        if (response.ok) {
+
+            alert("Profile saved successfully!");
+
+            window.location.href = "/Dashboard";
+
+        } else {
+
+            alert(result.message);
+
+        }
+
+    } catch (error) {
+
+        console.error("PROFILE SAVE ERROR:", error);
+
+        alert("Something went wrong while saving your profile.");
+
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>

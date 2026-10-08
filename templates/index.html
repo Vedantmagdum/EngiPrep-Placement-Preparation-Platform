@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EngiPrep – Placement Preparation Platform</title>
+<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <img src="/static/images/EngiPrep_Logo.png" alt="logo image">
+        <h2>EngiPrep – Placement Preparation Platform</h2>
+    </div>
+    
+    <nav>
+        <a href="/">Home</a>
+        <a href="/Preparation">Preparation</a>
+        <a href="/Dashboard">Dashboard</a>
+        <a href="{{ url_for('login_page') }}">Login</a>
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <h1>Prepare Smarter with AI</h1>
+
+        <p>
+            One platform for Aptitude Tests, Coding Practice,
+            Internship Opportunities and AI Placement Guidance.
+        </p>
+
+        <button>Start Practice</button>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img src="/static/images/student.jpg" alt="Hero Image">
+
+    </div>
+
+</section>
+
+<section class="services">
+
+    <h2>Our Services</h2>
+
+    <div class="service-box">
+
+        <div class="box">
+
+            <img src="/static/images/Aptitude.jpg">
+
+            <h3>Aptitude Test</h3>
+
+            <p>Practice quantitative, logical and verbal aptitude.</p>
+
+        </div>
+
+        <div class="box">
+
+            <img src="/static/images/coding.jpg">
+
+            <h3>Coding Practice</h3>
+
+            <p>Improve programming skills with coding questions.</p>
+
+        </div>
+
+        <div class="box">
+
+            <img src="/static/images/job and interview.jpg">
+
+            <h3>Internships & Jobs</h3>
+
+            <p>Find internship and placement opportunities.</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="ai">
+
+    <h2>AI Placement Assistant</h2>
+
+    <p>Explain Answers</p>
+    <p>Generate Practice Questions</p>
+    <p>Placement Guidance</p>
+    <p>Resume Tips</p>
+    <p>HR Interview Preparation</p>
+
+    <button>Chat with AI</button>
+
+</section>
+
+<section class="features">
+
+    <h2>Why Choose Us?</h2>
+
+    <div class="feature-box">
+
+        <div class="card">
+
+            <h3>Question Shuffle</h3>
+
+            <p>Every student gets a different set of questions.</p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Option Shuffle</h3>
+
+            <p>Answer options are shuffled automatically.</p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>AI Performance Analysis</h3>
+
+            <p>Track your strengths and weak topics.</p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>Coding Practice</h3>
+
+            <p>Practice coding and improve problem-solving skills.</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="companies">
+
+    <h2>Top Hiring Companies</h2>
+
+    <img src="/static/images/TCS logo.jpg" alt="TCS">
+
+    <img src="/static/images/infosys logo.jpg" alt="Infosys">
+
+    <img src="/static/images/Wipro_Logo.jpg" alt="Wipro">
+
+    <img src="/static/images/accenture logo.jpg" alt="Accenture">
+
+</section>
+
+<section class="contact">
+
+    <h2>Contact Us</h2>
+
+    <p>Email : abc@aiplacement.com</p>
+
+    <p>Phone : +91 9876543210</p>
+
+    <p>Location : Kolhapur, Maharashtra</p>
+
+</section>
+
+<footer>
+
+    <p>© 2026 AI Placement Preparation Portal. All Rights Reserved.</p>
+
+</footer>
+
+
+
+<!-- chatbot -->
+
+
+</body>
+
+<button
+    type="button"
+    class="chatbot-toggle"
+    id="chatbotToggle"
+    aria-controls="chatbotWindow"
+    aria-expanded="false"
+>
+    <span>✨</span>
+    <span>Ask EngiPrep AI</span>
+</button>
+
+<section
+    class="chatbot-window"
+    id="chatbotWindow"
+    aria-label="EngiPrep AI Assistant"
+>
+    <div class="chatbot-header">
+        <div class="chatbot-brand">
+            <div class="chatbot-avatar">✨</div>
+
+            <div class="chatbot-heading">
+                <h3>EngiPrep AI Assistant</h3>
+                <p>Your placement preparation partner</p>
+            </div>
+        </div>
+
+        <button
+            type="button"
+            class="chatbot-close"
+            id="chatbotClose"
+            aria-label="Close chatbot"
+        >
+            ×
+        </button>
+    </div>
+
+    <div
+        class="chatbot-messages"
+        id="chatbotMessages"
+        aria-live="polite"
+        aria-relevant="additions"
+    ></div>
+
+    <div class="chatbot-suggestions" id="chatbotSuggestions">
+        <button type="button" data-prompt="How should I prepare for aptitude?">
+            Aptitude tips
+        </button>
+
+        <button type="button" data-prompt="Give me a placement interview study plan.">
+            Interview plan
+        </button>
+
+        <button type="button" data-prompt="Ask me a Python interview question and explain its answer.">
+            Python practice
+        </button>
+    </div>
+
+    <div class="chatbot-status" id="chatbotStatus">
+        Ask about aptitude, coding, interviews or careers.
+    </div>
+
+    <form class="chatbot-form" id="chatbotForm">
+        <textarea
+            id="chatbotInput"
+            placeholder="Ask your question..."
+            rows="1"
+            maxlength="2000"
+            aria-label="Type your message"
+            required
+        ></textarea>
+
+        <button
+            type="submit"
+            class="chatbot-send"
+            id="chatbotSend"
+            aria-label="Send message"
+        >
+            ➤
+        </button>
+    </form>
+</section>
+
+<script src="{{ url_for('static', filename='js/chatbot.js') }}" defer></script>
+
+</html>
