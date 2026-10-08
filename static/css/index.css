@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #070b1a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+header {
+    width: 100%;
+    height: 78px;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(8, 13, 32, 0.95);
+    border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(18px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+}
+
+.logo h2 {
+    font-size: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+    background: linear-gradient(90deg, #ffffff, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo img {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(167, 139, 250, 0.4);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #a7b0c5;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 17px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffffff;
+    background: rgba(124, 58, 237, 0.12);
+}
+
+/* nav a.active {
+  color: #a7b0c5;
+  background: transparent;
+  box-shadow: none;
+} */
+
+
+.hero {
+    width: 90%;
+    max-width: 1250px;
+    min-height: 570px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 70px 0;
+}
+
+.hero-text {
+    width: 52%;
+}
+
+.hero-text h1 {
+    font-size: 52px;
+    line-height: 1.15;
+    font-weight: 800;
+    margin-bottom: 22px;
+    background: linear-gradient(90deg, #ffffff, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+    max-width: 620px;
+    color: #a7b0c5;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.hero-text button,
+.ai button {
+    border: none;
+    padding: 13px 26px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #7c3aed, #6366f1);
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+    transition: 0.3s ease;
+}
+
+.hero-text button:hover,
+.ai button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(124, 58, 237, 0.45);
+}
+
+.hero-image {
+    width: 48%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 520px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 25px;
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(124, 58, 237, 0.12);
+}
+
+.services {
+    width: 90%;
+    max-width: 1250px;
+    margin: 20px auto 80px;
+    text-align: center;
+}
+
+.services h2,
+.ai h2,
+.features h2,
+.companies h2,
+.contact h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 35px;
+    background: linear-gradient(90deg, #ffffff, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.service-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.box {
+    background: rgba(15, 23, 50, 0.72);
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: left;
+    backdrop-filter: blur(18px);
+    transition: 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-7px);
+    border-color: rgba(139, 92, 246, 0.45);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+}
+
+.box img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 17px;
+}
+
+.box h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.box p {
+    color: #9da8c2;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.ai {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    padding: 55px 40px;
+    text-align: center;
+    border-radius: 25px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 58, 237, 0.15),
+            rgba(99, 102, 241, 0.08)
+        );
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.ai h2 {
+    margin-bottom: 25px;
+}
+
+.ai p {
+    display: inline-block;
+    margin: 7px;
+    padding: 9px 17px;
+    border-radius: 20px;
+    color: #c4b5fd;
+    font-size: 13px;
+    background: rgba(124, 58, 237, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.ai button {
+    display: block;
+    margin: 28px auto 0;
+}
+
+.features {
+    width: 90%;
+    max-width: 1250px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.feature-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card {
+    min-height: 180px;
+    padding: 25px 20px;
+    text-align: left;
+    background: rgba(15, 23, 50, 0.72);
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    border-radius: 18px;
+    backdrop-filter: blur(18px);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(139, 92, 246, 0.45);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #9da8c2;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.companies {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.companies h2 {
+    margin-bottom: 30px;
+}
+
+.companies img {
+    width: 130px;
+    height: 70px;
+    object-fit: contain;
+    padding: 12px 18px;
+    margin: 10px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    transition: 0.3s ease;
+}
+
+.companies img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.contact {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 45px 30px;
+    text-align: center;
+    background: rgba(15, 23, 50, 0.65);
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    border-radius: 20px;
+}
+
+.contact h2 {
+    margin-bottom: 20px;
+}
+
+.contact p {
+    display: inline-block;
+    margin: 8px 15px;
+    color: #9da8c2;
+    font-size: 14px;
+}
+
+footer {
+    padding: 25px;
+    text-align: center;
+    color: #717d99;
+    font-size: 13px;
+    border-top: 1px solid rgba(139, 92, 246, 0.15);
+    background: #050816;
+}
+
+@media (max-width: 1000px) {
+    header {
+        padding: 0 30px;
+    }
+
+    .hero {
+        gap: 35px;
+    }
+
+    .hero-text h1 {
+        font-size: 42px;
+    }
+
+    .feature-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+    header {
+        height: auto;
+        padding: 18px 25px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 55px 0;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .service-box {
+        grid-template-columns: 1fr;
+    }
+
+    .box {
+        text-align: center;
+    }
+
+    .feature-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .logo h2 {
+        font-size: 16px;
+    }
+
+    nav a {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .hero-text h1 {
+        font-size: 34px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+    }
+
+    .hero-image img {
+        height: 260px;
+    }
+
+    .services h2,
+    .ai h2,
+    .features h2,
+    .companies h2,
+    .contact h2 {
+        font-size: 25px;
+    }
+
+    .ai {
+        padding: 40px 20px;
+    }
+
+    .companies img {
+        width: 110px;
+        height: 60px;
+    }
+}
