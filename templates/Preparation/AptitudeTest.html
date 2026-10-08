@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Aptitude Test</title>
+
+    <link rel="stylesheet"
+          href="/static/css/Preparation/AptitudeTest.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <img src="/static/images/EngiPrep_Logo.png"
+             alt="Logo Image">
+
+        <h2>
+            EngiPrep – Placement Preparation Platform
+        </h2>
+
+    </div>
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/Preparation">
+            Preparation
+        </a>
+
+        <a href="/Dashboard">
+            Dashboard
+        </a>
+
+        <a href="/login">
+            Login
+        </a>
+
+    </nav>
+
+</header>
+
+
+<div class="test-page">
+
+
+    <div class="page-header">
+
+        <span class="section-title">
+            APTITUDE TEST
+        </span>
+
+        <h1>
+            Practice Test
+        </h1>
+
+        <p>
+            Answer the following questions and check your aptitude skills.
+        </p>
+
+    </div>
+
+
+    <div class="test-progress">
+
+        <div class="progress-info">
+
+            <span id="questionCounter">
+                Question 1 of {{ questions|length }}
+            </span>
+
+            <span id="progressPercentage">
+                20%
+            </span>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div class="progress-fill"
+                 id="progressFill">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <form action="/Aptitude/Test/{{ topic_id }}"
+          method="POST"
+          id="aptitudeForm">
+
+
+        <div class="question-container">
+
+
+            {% for question in questions %}
+
+            <div class="question-card"
+                 data-question="{{ loop.index0 }}"
+                 {% if not loop.first %}style="display: none;"{% endif %}>
+
+
+                <div class="question-top">
+
+                    <div class="question-number">
+
+                        Question {{ loop.index }}
+
+                    </div>
+
+                    <span class="question-status">
+                        Not Answered
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    {{ question[1] }}
+                </h3>
+
+
+                <div class="options">
+
+
+                    <label class="option">
+
+                        <input type="radio"
+                               name="question_{{ question[0] }}"
+                               value="A"
+                               {% if loop.first %}required{% endif %}>
+
+                        <span>
+                            A. {{ question[2] }}
+                        </span>
+
+                    </label>
+
+
+                    <label class="option">
+
+                        <input type="radio"
+                               name="question_{{ question[0] }}"
+                               value="B">
+
+                        <span>
+                            B. {{ question[3] }}
+                        </span>
+
+                    </label>
+
+
+                    <label class="option">
+
+                        <input type="radio"
+                               name="question_{{ question[0] }}"
+                               value="C">
+
+                        <span>
+                            C. {{ question[4] }}
+                        </span>
+
+                    </label>
+
+
+                    <label class="option">
+
+                        <input type="radio"
+                               name="question_{{ question[0] }}"
+                               value="D">
+
+                        <span>
+                            D. {{ question[5] }}
+                        </span>
+
+                    </label>
+
+
+                </div>
+
+
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+
+        <div class="navigation-section">
+
+
+            <button type="button"
+                    class="previous-btn"
+                    id="previousBtn"
+                    onclick="previousQuestion()"
+                    disabled>
+
+                Previous
+
+            </button>
+
+
+            <button type="button"
+                    class="next-btn"
+                    id="nextBtn"
+                    onclick="nextQuestion()">
+
+                Next
+
+            </button>
+
+
+            <button type="submit"
+                    class="submit-btn"
+                    id="submitBtn"
+                    style="display: none;">
+
+                Submit Test
+
+            </button>
+
+
+        </div>
+
+
+    </form>
+
+</div>
+
+
+<script>
+
+    const questionCards =
+        document.querySelectorAll(".question-card");
+
+    const previousBtn =
+        document.getElementById("previousBtn");
+
+    const nextBtn =
+        document.getElementById("nextBtn");
+
+    const submitBtn =
+        document.getElementById("submitBtn");
+
+    const questionCounter =
+        document.getElementById("questionCounter");
+
+    const progressPercentage =
+        document.getElementById("progressPercentage");
+
+    const progressFill =
+        document.getElementById("progressFill");
+
+
+    let currentQuestion = 0;
+
+
+    function updateQuestion() {
+
+        questionCards.forEach((card, index) => {
+
+            if (index === currentQuestion) {
+
+                card.style.display = "block";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        const totalQuestions =
+            questionCards.length;
+
+
+        const currentNumber =
+            currentQuestion + 1;
+
+
+        const percentage =
+            Math.round(
+                (currentNumber / totalQuestions) * 100
+            );
+
+
+        questionCounter.textContent =
+            "Question " +
+            currentNumber +
+            " of " +
+            totalQuestions;
+
+
+        progressPercentage.textContent =
+            percentage + "%";
+
+
+        progressFill.style.width =
+            percentage + "%";
+
+
+        if (currentQuestion === 0) {
+
+            previousBtn.disabled = true;
+
+        } else {
+
+            previousBtn.disabled = false;
+
+        }
+
+
+        if (currentQuestion === totalQuestions - 1) {
+
+            nextBtn.style.display = "none";
+
+            submitBtn.style.display = "inline-block";
+
+        } else {
+
+            nextBtn.style.display = "inline-block";
+
+            submitBtn.style.display = "none";
+
+        }
+
+
+        updateAnswerStatus();
+
+    }
+
+
+    function updateAnswerStatus() {
+
+        questionCards.forEach((card, index) => {
+
+            const status =
+                card.querySelector(".question-status");
+
+
+            const selected =
+                card.querySelector(
+                    'input[type="radio"]:checked'
+                );
+
+
+            if (selected) {
+
+                status.textContent =
+                    "Answered";
+
+                status.classList.add(
+                    "answered"
+                );
+
+            } else {
+
+                status.textContent =
+                    "Not Answered";
+
+                status.classList.remove(
+                    "answered"
+                );
+
+            }
+
+        });
+
+    }
+
+
+    function nextQuestion() {
+
+        const currentCard =
+            questionCards[currentQuestion];
+
+
+        const selected =
+            currentCard.querySelector(
+                'input[type="radio"]:checked'
+            );
+
+
+        if (!selected) {
+
+            alert(
+                "Please select an answer before continuing."
+            );
+
+            return;
+
+        }
+
+
+        if (currentQuestion <
+            questionCards.length - 1) {
+
+            currentQuestion++;
+
+            updateQuestion();
+
+        }
+
+    }
+
+
+    function previousQuestion() {
+
+        if (currentQuestion > 0) {
+
+            currentQuestion--;
+
+            updateQuestion();
+
+        }
+
+    }
+
+
+    document
+        .querySelectorAll(
+            'input[type="radio"]'
+        )
+        .forEach(input => {
+
+            input.addEventListener(
+                "change",
+                updateAnswerStatus
+            );
+
+        });
+
+
+    document
+        .getElementById("aptitudeForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                const unanswered = [];
+
+                questionCards.forEach(
+                    (card, index) => {
+
+                        const selected =
+                            card.querySelector(
+                                'input[type="radio"]:checked'
+                            );
+
+                        if (!selected) {
+
+                            unanswered.push(
+                                index + 1
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                if (unanswered.length > 0) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Please answer all questions before submitting the test."
+                    );
+
+                }
+
+            }
+        );
+
+
+    updateQuestion();
+
+</script>
+
+</body>
+
+</html>

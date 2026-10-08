@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aptitude Test Result</title>
+
+    <link rel="stylesheet" href="/static/css/Preparation/AptitudeResult.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <img src="/static/images/EngiPrep_Logo.png" alt="EngiPrep Logo">
+        <h2>EngiPrep – Placement Preparation Platform</h2>
+    </div>
+
+    <nav>
+
+    <a href="/">
+        Home
+    </a>
+
+    <a href="/Preparation">
+        Preparation
+    </a>
+
+    <a href="/Dashboard">
+        Dashboard
+    </a>
+
+    {% if session.get("user_id") %}
+
+    <a href="/logout">
+        Logout
+    </a>
+
+    {% else %}
+
+    <a href="/login">
+        Login
+    </a>
+
+    {% endif %}
+
+</nav>
+
+</header>
+
+
+<main class="result-page">
+
+    <div class="result-card">
+
+        <div class="result-icon">🏆</div>
+
+        <span class="section-title">TEST COMPLETED</span>
+
+        <h1>Your Result</h1>
+
+        <p class="subtitle">
+            Here is your aptitude test performance.
+        </p>
+
+
+        <div class="score-circle">
+
+            <strong>{{ percentage }}%</strong>
+
+            <span>Percentage</span>
+
+        </div>
+
+
+        <div class="result-details">
+
+            <div class="detail">
+
+                <span>Total Questions</span>
+
+                <strong>{{ total_questions }}</strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>Correct Answers</span>
+
+                <strong>{{ correct_answers }}</strong>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>Score</span>
+
+                <strong>{{ score }} / {{ total_questions }}</strong>
+
+            </div>
+
+        </div>
+
+
+        <p class="message">
+
+            {% if percentage >= 80 %}
+
+                Excellent work! Keep practising to maintain your progress.
+
+            {% elif percentage >= 50 %}
+
+                Good effort! Practise more to improve your score.
+
+            {% else %}
+
+                Keep learning and try this topic again.
+
+            {% endif %}
+
+        </p>
+
+
+        <div class="result-buttons">
+
+            <a href="/Aptitude/Test/{{ topic_id }}" class="primary-btn">
+                Try Again
+            </a>
+
+            <a href="/Aptitude" class="secondary-btn">
+                All Aptitude Sections
+            </a>
+
+            <a href="/Dashboard" class="secondary-btn">
+                View Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <section class="review-section">
+
+        <div class="review-header">
+
+            <span class="section-title">ANSWER REVIEW</span>
+
+            <h2>Review Your Answers</h2>
+
+            <p>
+                Check your answers and understand the correct solution.
+            </p>
+
+        </div>
+
+
+        {% for item in result_questions %}
+
+        <div class="question-review">
+
+            <div class="question-number">
+
+                Question {{ loop.index }}
+
+            </div>
+
+
+            <h3>
+                {{ item.question }}
+            </h3>
+
+
+            <div class="answer-row">
+
+                <div class="answer-box">
+
+                    <span>Your Answer</span>
+
+                    {% if item.selected_answer %}
+
+                        <strong>
+                            {{ item.selected_answer }} -
+                            {{ item.selected_text }}
+                        </strong>
+
+                    {% else %}
+
+                        <strong>
+                            Not answered
+                        </strong>
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="answer-box correct-box">
+
+                    <span>Correct Answer</span>
+
+                    <strong>
+                        {{ item.correct_answer }} -
+                        {{ item.correct_text }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            {% if item.selected_answer == item.correct_answer %}
+
+                <div class="answer-status correct-status">
+
+                    ✓ Correct Answer
+
+                </div>
+
+            {% else %}
+
+                <div class="answer-status wrong-status">
+
+                    ✗ Incorrect Answer
+
+                </div>
+
+            {% endif %}
+
+
+            {% if item.explanation %}
+
+                <div class="explanation">
+
+                    <strong>Explanation</strong>
+
+                    <p>
+                        {{ item.explanation }}
+                    </p>
+
+                </div>
+
+            {% else %}
+
+                <div class="explanation">
+
+                    <strong>Explanation</strong>
+
+                    <p>
+                        Explanation is not available for this question.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </section>
+
+</main>
+
+</body>
+
+</html>

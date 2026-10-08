@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Aptitude Topics</title>
+
+    <link rel="stylesheet"
+          href="/static/css/Preparation/AptitudeTopics.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <img src="/static/images/EngiPrep_Logo.png"
+             alt="Logo Image">
+
+        <h2>
+            EngiPrep – Placement Preparation Platform
+        </h2>
+
+    </div>
+
+    <nav>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/Preparation">
+            Preparation
+        </a>
+
+        <a href="/Dashboard">
+            Dashboard
+        </a>
+
+        <a href="/login">
+            Login
+        </a>
+
+    </nav>
+
+</header>
+
+
+<div class="topics-page">
+
+
+    <div class="page-header">
+
+        <span class="section-title">
+            APTITUDE PREPARATION
+        </span>
+
+        <h1>
+            Choose Your Topic
+        </h1>
+
+        <p>
+            Select a topic below to start your aptitude practice.
+        </p>
+
+    </div>
+
+
+    <div class="topics-layout">
+
+
+        <aside class="topics-sidebar">
+
+            <h3>
+                Aptitude Topics
+            </h3>
+
+            <a href="/Aptitude">
+                ← Back to Aptitude
+            </a>
+
+        </aside>
+
+
+        <main class="topics-content">
+
+
+            <div class="welcome-card">
+
+                <span>
+                    PRACTICE TOPICS
+                </span>
+
+                <h2>
+                    Start Your Preparation
+                </h2>
+
+                <p>
+                    Choose a topic and solve questions to improve
+                    your placement aptitude skills.
+                </p>
+
+            </div>
+
+
+            <div class="topic-grid">
+
+                {% for topic in topics %}
+
+                <div class="topic-card">
+
+                    <div class="topic-icon">
+                        📝
+                    </div>
+
+                    <h3>
+                        {{ topic[1] }}
+                    </h3>
+
+                    <p>
+                        Practice questions related to
+                        {{ topic[1] }} and improve your
+                        placement preparation.
+                    </p>
+
+                    <a href="/Aptitude/Test/{{ topic[0] }}">
+                        Start Practice →
+                    </a>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
