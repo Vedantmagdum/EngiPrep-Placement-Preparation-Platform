@@ -4,3 +4,5 @@ psycopg2-binary
 python-dotenv
 requests
 Werkzeug
+google-genai
+google-generativeai
