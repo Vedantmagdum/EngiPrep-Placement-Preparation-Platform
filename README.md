@@ -1,160 +1,214 @@
-# EngiPrep – Placement Preparation Platform
+EngiPrep – Placement Preparation Platform
+========================================
 
 EngiPrep is a web-based placement preparation platform developed using Flask, PostgreSQL, HTML, CSS, JavaScript, and Google Gemini AI.
 
-The platform helps students manage their placement preparation, practice aptitude questions, maintain their student profile, track test performance, and interact with an AI-powered preparation assistant.
+The platform helps engineering students manage their placement preparation, practice aptitude questions, maintain student profiles, track test performance, and interact with an AI-powered preparation assistant.
 
-## Features
+PROJECT OVERVIEW
+----------------
 
-### Student Authentication
-- Student signup
-- Student login
-- Password hashing
+Project Title: EngiPrep – Placement Preparation Platform
+
+Project Type: Group Mini-Project
+
+Domain: Web Development and Artificial Intelligence
+
+FEATURES
+--------
+
+1. STUDENT AUTHENTICATION
+
+- Student signup and login
+- Password hashing for secure password storage
 - Session-based authentication
 - Logout functionality
 
-### Student Profile
-Students can maintain their:
-- Personal information
-- College information
-- Branch
-- Semester
-- CGPA
+2. STUDENT PROFILE MANAGEMENT
+
+Students can maintain their personal and academic information, including:
+
+- Full name and email
+- College name and branch
+- Semester and CGPA
 - Graduation year
-- City
-- Phone number
-- LinkedIn profile
-- GitHub profile
+- City and phone number
+- LinkedIn and GitHub profiles
 - Resume link
-- Strengths
-- Weaknesses
+- Strengths and weaknesses
 - Academic achievements
 
-### Aptitude Preparation
-The aptitude module provides:
-- Multiple aptitude sections
-- Multiple topics
-- Automatically generated questions
+3. APTITUDE PREPARATION
+
+The aptitude module helps students practice placement-oriented questions through multiple sections and topics.
+
+- Multiple aptitude sections and topics
 - Multiple-choice questions
+- Automatically generated questions
 - Question explanations
 - Automatic score calculation
 - Percentage calculation
-- Attempt history
+- Test attempt history
 
-### AI Question Generation
-Google Gemini AI is used to generate aptitude questions dynamically.
+4. AI-POWERED QUESTION GENERATION
 
-Generated questions are stored in PostgreSQL so that they can be reused instead of generating the same questions repeatedly.
+Google Gemini AI is integrated to generate aptitude questions dynamically.
 
-### AI Chatbot
-EngiPrep includes an AI-powered chatbot that:
+- Generates questions based on the selected section and topic
+- Supports placement preparation practice
+- Stores generated questions in PostgreSQL for reuse
+- Helps reduce repeated question generation
+
+5. AI-POWERED CHATBOT
+
+EngiPrep includes an AI-powered preparation assistant that:
+
 - Answers placement preparation questions
-- Uses the student's profile information
-- Uses previous aptitude performance
+- Uses available student profile information
+- Uses available aptitude performance data
 - Provides personalized preparation guidance
 - Maintains recent conversation context
 
-### Dashboard
-The dashboard provides an overview of the student's preparation activity, including aptitude performance and student information.
+6. STUDENT DASHBOARD
 
-## Technology Stack
+The dashboard provides an overview of the student's preparation activity and academic information.
 
-### Frontend
+- Student information overview
+- CGPA and profile details
+- Aptitude test performance
+- Preparation activity tracking
+- Test results and performance summaries
+
+TECHNOLOGY STACK
+----------------
+
+Frontend:
 - HTML5
 - CSS3
 - JavaScript
 - Poppins Font
 
-### Backend
+Backend:
 - Python
 - Flask
 
-### Database
+Database:
 - PostgreSQL
 - psycopg2
 
-### AI
+Artificial Intelligence:
 - Google Gemini API
 
-### Deployment
+Development Tools:
+- Visual Studio Code
+- Git
+- GitHub
+- pgAdmin
+
+Deployment:
 - Render
 
-## Project Structure
+PROJECT STRUCTURE
+-----------------
 
-```text
 EngiPrep/
-│
-├── app.py
-├── config.py
-├── db.py
-├── api_service.py
-├── requirements.txt
-├── render.yaml
-├── .env
-├── .gitignore
-├── README.md
-│
-├── database/
-│   └── schema.sql
-│
-├── routes/
-│   ├── auth.py
-│   ├── profile.py
-│   ├── dashboard.py
-│   ├── aptitude.py
-│   └── chatbot.py
-│
-├── templates/
-│   ├── index.html
-│   ├── login.html
-│   ├── signup.html
-│   ├── profile.html
-│   ├── Dashboard.html
-│   └── Preparation.html
-│
-└── static/
-    ├── css/
-    ├── js/
-    └── images/
-```
+|
+|-- app.py
+|-- config.py
+|-- db.py
+|-- api_service.py
+|-- requirements.txt
+|-- render.yaml
+|-- .env
+|-- .gitignore
+|-- README.md
+|
+|-- database/
+|   |-- schema.sql
+|
+|-- routes/
+|   |-- auth.py
+|   |-- profile.py
+|   |-- dashboard.py
+|   |-- aptitude.py
+|   |-- chatbot.py
+|
+|-- templates/
+|   |-- index.html
+|   |-- login.html
+|   |-- signup.html
+|   |-- profile.html
+|   |-- Dashboard.html
+|   |-- Preparation.html
+|
+|-- static/
+    |-- css/
+    |-- js/
+    |-- images/
 
-## Database
+DATABASE
+--------
 
-EngiPrep uses PostgreSQL to store student and preparation data.
+EngiPrep uses PostgreSQL to store student information, aptitude questions, test results, and preparation-related data.
 
 Important database tables include:
 
-- `users`
-- `student_profile`
-- `skills`
-- `student_skills`
-- `skill_gap_analysis`
-- `academics`
-- `aptitude_sections`
-- `aptitude_topics`
-- `aptitude_questions`
-- `aptitude_attempts`
-- `aptitude_tests`
-- `projects`
-- `certificates`
-- `internships`
-- `companies`
-- `job_applications`
-- `competitions`
+- users
+- student_profile
+- skills
+- student_skills
+- skill_gap_analysis
+- academics
+- aptitude_sections
+- aptitude_topics
+- aptitude_questions
+- aptitude_attempts
+- aptitude_tests
+- projects
+- certificates
+- internships
+- companies
+- job_applications
+- competitions
 
-The master database structure is available in:
+The master database structure is maintained in:
 
-```text
 database/schema.sql
-```
 
-## Environment Variables
+INSTALLATION AND SETUP
+----------------------
 
-Create a `.env` file in the project root.
+Prerequisites:
 
-Example:
+- Python
+- PostgreSQL
+- Git
+- Visual Studio Code
 
-```env
+Step 1: Clone the Repository
+
+git clone https://github.com/nileshlad2006-beep/EngiPrep.git
+
+cd EngiPrep
+
+Step 2: Create a Virtual Environment
+
+python -m venv venv
+
+Step 3: Activate the Virtual Environment
+
+On Windows:
+
+venv\Scripts\activate
+
+Step 4: Install Dependencies
+
+pip install -r requirements.txt
+
+Step 5: Configure Environment Variables
+
+Create a .env file in the project root directory and configure the required values.
+
 SECRET_KEY=your_secret_key
 
 DB_HOST=localhost
@@ -164,106 +218,148 @@ DB_USER=postgres
 DB_PASSWORD=your_postgresql_password
 
 GEMINI_API_KEY=your_gemini_api_key
-```
 
-Do not upload the `.env` file to GitHub.
+Replace the example values with your own local configuration.
 
-## Installation
+Never upload actual passwords, API keys, or secret keys to GitHub.
 
-Clone the project and open the project directory:
+Step 6: Create the Database
 
-```bash
-cd EngiPrep
-```
+Create a PostgreSQL database named:
 
-Create a virtual environment:
-
-```bash
-python -m venv venv
-```
-
-Activate the virtual environment on Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-Install the required packages:
-
-```bash
-pip install -r requirements.txt
-```
-
-Configure the `.env` file with the PostgreSQL and Gemini API credentials.
-
-Create the required PostgreSQL database:
-
-```text
 project_database
-```
 
-Run the Flask application:
+Create the required tables using the project's database schema and setup instructions.
 
-```bash
+Step 7: Run the Application
+
 python app.py
-```
 
-The application will be available at:
+Open the application in your browser:
 
-```text
 http://127.0.0.1:5000
-```
 
-## Application Flow
+APPLICATION WORKFLOW
+--------------------
 
-```text
-Home
-  ↓
-Signup / Login
-  ↓
+Home Page
+    |
+    v
+Student Signup / Login
+    |
+    v
 Student Profile
-  ↓
+    |
+    v
 Dashboard
-  ↓
-Preparation
-  ↓
-Aptitude Test
-  ↓
-AI Generated Questions
-  ↓
-Score & Results
-  ↓
-Dashboard
-  ↓
-Personalized AI Chatbot
-```
+    |
+    v
+Preparation Module
+    |
+    v
+Select Aptitude Section and Topic
+    |
+    v
+Practice Aptitude Questions
+    |
+    v
+Automatic Score and Result Calculation
+    |
+    v
+View Performance on Dashboard
+    |
+    v
+Personalized AI Chatbot Assistance
 
-## Security
+SECURITY
+--------
 
-The application uses:
+The project incorporates the following security practices:
+
 - Password hashing
-- Flask sessions
+- Flask session-based authentication
 - Environment variables for sensitive configuration
 - Parameterized PostgreSQL queries
 - Input validation
 
-API keys, database passwords, and secret keys should never be committed to GitHub.
+Important: The .env file contains sensitive credentials and must not be uploaded to GitHub. The .gitignore file should exclude .env and the virtual environment directory.
 
-## Future Improvements
+PROJECT TEAM
+------------
 
-Planned improvements include:
+Project Title: EngiPrep – Placement Preparation Platform
+
+Project Type: Group Mini-Project
+
+1. Nilesh Lad
+Role: Project Lead, Backend Development and Integration
+
+Responsibilities:
+- Led the development and integration of project modules.
+- Worked on Flask backend functionality and application routes.
+- Contributed to student authentication and profile management.
+- Worked on aptitude functionality, chatbot integration, and application deployment.
+
+2. Suhan Patel
+Role: Frontend Development and UI Design
+
+Responsibilities:
+- Worked on frontend development of the platform.
+- Designed and developed user interface components.
+- Contributed to HTML, CSS, and JavaScript implementation.
+- Worked on visual layout and user experience.
+
+3. Vedant Magdum
+Role: Database Design and Management
+
+Responsibilities:
+- Worked on PostgreSQL database design and management.
+- Contributed to database schema and table organization.
+- Worked on relationships between student, aptitude, and preparation data.
+- Contributed to database structure and data storage.
+
+4. Onkar Mane
+Role: Testing, Documentation and Project Presentation
+
+Responsibilities:
+- Worked on application testing and verification.
+- Helped document project features and implementation details.
+- Contributed to identifying issues and checking application functionality.
+- Prepared project presentation materials.
+
+PROJECT LINKS
+-------------
+
+Live Application:
+https://engiprep.onrender.com
+
+GitHub Repository:
+https://github.com/nileshlad2006-beep/EngiPrep
+
+FUTURE ENHANCEMENTS
+-------------------
+
+Possible future improvements include:
+
 - Advanced skill-gap analysis
-- Resume analysis
+- Resume analysis and feedback
 - Placement company recommendations
 - Internship recommendations
-- More aptitude categories
+- Additional aptitude categories
 - Advanced student performance analytics
 - Improved AI-based career guidance
 
-## Author
+CONCLUSION
+----------
 
-**Nilesh Lad**
+EngiPrep aims to provide engineering students with a centralized platform for placement preparation by combining aptitude practice, student profile management, performance tracking, and AI-powered assistance.
 
-**EngiPrep – Placement Preparation Platform**
+The project demonstrates the integration of frontend technologies, Python Flask, PostgreSQL, and Google Gemini AI into a collaborative web-based application.
 
-Developed as a student mini-project for placement preparation and career development.
+Developed by the EngiPrep Project Team
+
+Nilesh Lad | Suhan Patel | Vedant Magdum | Onkar Mane
+
+EngiPrep – Placement Preparation Platform
+
+Group Mini-Project for Placement Preparation and Career Development
