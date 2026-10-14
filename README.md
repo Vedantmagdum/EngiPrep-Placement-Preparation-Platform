@@ -360,7 +360,7 @@ The project demonstrates the integration of frontend technologies, Python Flask,
 
 Developed by the EngiPrep Project Team
 
-Nilesh Lad | Suhan Patel | Vedant Magdum | Onkar Mane
+Vedant Magdum | Suhan Patel | Nilesh Lad | Onkar Mane
 
 EngiPrep – Placement Preparation Platform
 
