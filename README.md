@@ -187,7 +187,7 @@ Prerequisites:
 
 Step 1: Clone the Repository
 
-git clone https://github.com/nileshlad2006-beep/EngiPrep.git
+git clone https://github.com/Vedantmagdum/EngiPrep-Placement-Preparation-Platform
 
 cd EngiPrep
 
@@ -291,12 +291,13 @@ Project Title: EngiPrep – Placement Preparation Platform
 
 Project Type: Group Mini-Project
 
-1. Nilesh Lad
-Role: Project Lead, Backend Development and Integration
+1. Vedant Magdum
+Role: Project Lead,Database Design,Backend Development and Integration
 
 Responsibilities:
 - Led the development and integration of project modules.
 - Worked on Flask backend functionality and application routes.
+- Contributed to database schema and table organization.
 - Contributed to student authentication and profile management.
 - Worked on aptitude functionality, chatbot integration, and application deployment.
 
@@ -309,12 +310,13 @@ Responsibilities:
 - Contributed to HTML, CSS, and JavaScript implementation.
 - Worked on visual layout and user experience.
 
-3. Vedant Magdum
-Role: Database Design and Management
+3. Nilesh Lad
+Role: Database Design and Management,Backend Development and Integration
 
 Responsibilities:
 - Worked on PostgreSQL database design and management.
 - Contributed to database schema and table organization.
+- Worked on Flask backend functionality and application routes.
 - Worked on relationships between student, aptitude, and preparation data.
 - Contributed to database structure and data storage.
 
@@ -334,7 +336,7 @@ Live Application:
 https://engiprep.onrender.com
 
 GitHub Repository:
-https://github.com/nileshlad2006-beep/EngiPrep
+https://github.com/Vedantmagdum/EngiPrep-Placement-Preparation-Platform
 
 FUTURE ENHANCEMENTS
 -------------------
